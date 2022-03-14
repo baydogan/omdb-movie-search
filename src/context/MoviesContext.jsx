@@ -1,10 +1,11 @@
 import { createContext } from "react";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 
 const initialState = {
   loading: false,
   error: null,
   movies: [],
+  success: null,
 };
 
 export const MoviesContext = createContext();
@@ -16,6 +17,7 @@ export const reducer = (state, action) => {
         loading: true,
         error: null,
         movies: [],
+        success: null,
       };
     case "FETCH_SUCCESS":
       return {
@@ -23,6 +25,7 @@ export const reducer = (state, action) => {
         loading: false,
         error: null,
         movies: action.payload,
+        success: true,
       };
     case "FETCH_FAILURE":
       return {
@@ -30,10 +33,15 @@ export const reducer = (state, action) => {
         loading: false,
         error: action.payload,
         movies: [],
+        success: false,
       };
     case "CLEAR_DATA":
       return {
-        initialState,
+        ...state,
+        loading: false,
+        error: null,
+        movies: [],
+        success: null,
       };
 
     default:
@@ -41,7 +49,8 @@ export const reducer = (state, action) => {
   }
 };
 
-export const MovieProvider = ({ children }) => {
+export const MovieProvider = ({ children }) => { 
   const [state, dispatch] = useReducer(reducer, initialState);
-  return <MoviesContext.Provider value={{ state, dispatch }}>{children}</MoviesContext.Provider>;
+  const [search, setSearch] = useState(""); // search kısmı iki layouttada kullanılabilmek için global state olarak tanımlandı
+  return <MoviesContext.Provider value={{ state, dispatch, search, setSearch }}>{children}</MoviesContext.Provider>;
 };

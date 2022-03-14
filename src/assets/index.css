@@ -16,7 +16,7 @@
 
 @layer components {
   .container {
-    @apply flex flex-col  justify-center h-screen m-auto md:max-w-md max-w-sm;
+    @apply flex flex-col  justify-center h-screen mx-auto max-w-screen-sm md:max-w-screen-md px-4;
   }
 
   .header {
@@ -28,7 +28,7 @@
   }
 
   .search-section {
-    @apply max-w-full border-solid border border-gray-300 p-4 rounded-lg;
+    @apply max-w-full border-solid border bg-white border-gray-300 p-4 rounded-lg  transition-all duration-1000 ease-in-out;
   }
 
   .search-section h3 {
@@ -48,22 +48,27 @@
   }
 
   .result-list {
-    @apply max-w-full border-solid border border-gray-300 p-3 rounded-lg mt-5;
+    @apply max-w-full border-solid border bg-white border-gray-300 p-3 rounded-lg mt-5
+    
   }
 
   .result-list span {
     @apply text-md font-semibold mb-1;
   }
-  
-  .search-button{
-    @apply rounded-xxxl bg-searchButton px-3 py-1 text-white text-md font-semibold;
+
+  .search-button {
+    @apply rounded-xxxl bg-searchButton px-3 py-1 text-white text-md font-semibold hover:shadow-lg transition-all duration-300
   }
 
-  .clear-button{
-      @apply text-searchButton font-semibold
+  .clear-button {
+    @apply text-searchButton font-semibold
   }
 
-  .search-buttons{
-    @apply flex justify-end mt-2 gap-3
+  .search-buttons {
+    @apply flex justify-end mt-2 gap-3;
+  }
+
+  .movie-card {
+    @apply text-md font-normal py-1 hover:cursor-pointer;
   }
 }

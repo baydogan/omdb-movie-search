@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const Moviecard = () => {
-    return (
-        <div className='movie-card'>
-            <p className='text-md font-normal py-1'>Movie 1</p>
-        </div>
-    );
-}
+const Moviecard = ({ movie }) => {
+  return (
+    <div className="movie-card">
+      <p>{movie.Title}</p>
+    </div>
+  );
+};
 
 export default Moviecard;

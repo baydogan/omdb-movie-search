@@ -4,14 +4,13 @@ import Searchbutton from "../components/SearchButton";
 import Clearbutton from "../components/ClearButton";
 
 import { useFetch } from "../hooks/useFetch";
-import { useState } from "react";
 import { useMovieContext } from "../hooks/useMoviesContext";
 
 const SearchSection = () => {
-  const [search, setSearch] = useState("");
+  const { state, search, setSearch } = useMovieContext();
   const { fetchData, clearData } = useFetch("http://www.omdbapi.com/?apikey=e9797b4c&s=", search);
-  const { state } = useMovieContext();
-  console.log(state);
+
+  //child componentlerden litfing state up ile veri almak için handle fonksiyonları
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -25,6 +24,7 @@ const SearchSection = () => {
     clearData();
     setSearch("");
   };
+  
 
   return (
     <div className="search-section">

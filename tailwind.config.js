@@ -6,6 +6,11 @@ module.exports = {
       md: ["16px", "24px"],
       sm: ["12px", "18x"],
     },
+    screens: {
+      md: "550px",
+      sm: "350px",
+    },
+
     extend: {
       colors: {
         primary: "#F9FAFB",
