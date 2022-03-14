@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useReducer, useState } from "react";
 
-const initialState = {
+const initialState = { // başlangıçta alınacak initial state
   loading: false,
   error: null,
   movies: [],
@@ -48,9 +48,9 @@ export const reducer = (state, action) => {
       return state;
   }
 };
-
+// state'i tüm componentler seviyesinde paylaşmak için context oluşturuldu
 export const MovieProvider = ({ children }) => { 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState); //
   const [search, setSearch] = useState(""); // search kısmı iki layouttada kullanılabilmek için global state olarak tanımlandı
   return <MoviesContext.Provider value={{ state, dispatch, search, setSearch }}>{children}</MoviesContext.Provider>;
 };

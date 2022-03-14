@@ -7,8 +7,9 @@ import { useFetch } from "../hooks/useFetch";
 import { useMovieContext } from "../hooks/useMoviesContext";
 
 const SearchSection = () => {
-  const { state, search, setSearch } = useMovieContext();
-  const { fetchData, clearData } = useFetch("http://www.omdbapi.com/?apikey=e9797b4c&s=", search);
+  const { search, setSearch } = useMovieContext();
+  const url = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=`; // api keyle birlikte oluşturulan url
+  const { fetchData, clearData } = useFetch(url, search);
 
   //child componentlerden litfing state up ile veri almak için handle fonksiyonları
 
@@ -24,7 +25,6 @@ const SearchSection = () => {
     clearData();
     setSearch("");
   };
-  
 
   return (
     <div className="search-section">
