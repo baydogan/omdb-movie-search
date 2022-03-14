@@ -5,7 +5,7 @@ import { useMovieContext } from "./useMoviesContext";
 export const useFetch = (url, search) => { // veri çekmek için oluşturlan bir custom hook, url ve search parametreleri alır
   const { dispatch } = useMovieContext();
   const fetchData = async () => {
-    if (search !== "") {
+    if (search.length >= 3) {
       dispatch({ type: "FETCH_START" });
       try {
         const response = await axios.get(url + search);
@@ -19,6 +19,7 @@ export const useFetch = (url, search) => { // veri çekmek için oluşturlan bir
       }
     } else {
       dispatch({ type: "CLEAR_DATA" });
+      window.alert("Search term must be at least 3 characters long");
     }
   };
 
