@@ -1,3 +1,4 @@
+//componentler
 import Moviecard from "../components/MovieCard";
 
 const Resultlist = () => {
@@ -8,7 +9,7 @@ const Resultlist = () => {
       <div className="movie-list">
         <Moviecard />
         <Moviecard />
-        
+
       </div>
     </div>
   );

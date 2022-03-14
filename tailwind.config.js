@@ -9,7 +9,11 @@ module.exports = {
     extend: {
       colors: {
         primary: "#F9FAFB",
-        border: "#242424"
+        border: "#242424",
+        searchButton: "#50B83C",
+      },
+      borderRadius: {
+        xxxl: "32px",
       },
     },
   },

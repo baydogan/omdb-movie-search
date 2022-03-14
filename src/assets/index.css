@@ -54,4 +54,16 @@
   .result-list span {
     @apply text-md font-semibold mb-1;
   }
+  
+  .search-button{
+    @apply rounded-xxxl bg-searchButton px-3 py-1 text-white text-md font-semibold;
+  }
+
+  .clear-button{
+      @apply text-searchButton font-semibold
+  }
+
+  .search-buttons{
+    @apply flex justify-end mt-2 gap-3
+  }
 }

@@ -1,11 +1,38 @@
 //componentler
 import Searchbox from "../components/SearchBox";
+import Searchbutton from "../components/SearchButton";
+import Clearbutton from "../components/ClearButton";
+
+import { useFetch } from "../hooks/useFetch";
+import { useState } from "react";
 
 const SearchSection = () => {
+  const [search, setSearch] = useState("");
+  const { state, fetchData, clearData } = useFetch("http://www.omdbapi.com/?apikey=e9797b4c&s=", search);
+
+  console.log(state);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleFetch = () => {
+    fetchData();
+  };
+
+  const handleClear = () => {
+    clearData();
+    setSearch("");
+  };
+
   return (
     <div className="search-section">
       <h3>Movie Title</h3>
-      <Searchbox />
+      <Searchbox search={search} handleChange={handleChange} />
+      <div className="search-buttons">
+        <Clearbutton handleClear={handleClear} />
+        <Searchbutton handleFetch={handleFetch} />
+      </div>
     </div>
   );
 };
